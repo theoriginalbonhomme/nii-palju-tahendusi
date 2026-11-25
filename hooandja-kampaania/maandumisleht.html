@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meistrite aabits Hooandjas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: warm, bookish, a teacher's invitation; few hues, fine detail
+IDEA: a parchment page from an old primer, like the Aabrami hobulausujad scroll
+PICTURE: two volumes of the aabits on parchment with multi-meaning words rising from them
+COLOUR and TYPE: deep brown #491D17, ochre #A67225, parchment #F1DCB5; Alegreya + Alegreya Sans
+LAYOUT: hero with picture, progress, story, rewards grid, timeline, FAQ, footer
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#f7ecd6,#1c1614);--paper:light-dark(#fffaf0,#2a201c);--ink:light-dark(#2b1410,#f3e4c8);
+--brown:light-dark(#491d17,#e6c99a);--ochre:light-dark(#8c641a,#d9a956);--muted:light-dark(#6d564a,#c2ad92);
+--line:light-dark(#e2cfa9,#4a3a30);--deep:#491d17}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Alegreya Sans",Trebuchet MS,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Alegreya,Georgia,serif;color:var(--brown);line-height:1.08;text-wrap:balance;margin:0 0 .4em}
+h1{font-size:clamp(34px,5vw,52px)}h2{font-size:clamp(28px,3.4vw,38px)}h3{font-size:21px}
+a{color:var(--ochre)}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(32px,5vw,72px) max(5vw,16px)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px max(5vw,16px);background:var(--deep);color:#f1dcb5;font-size:15px}
+.top b{font-family:Alegreya,serif;font-size:18px;letter-spacing:.2px}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.lead{font-size:19px;color:var(--muted);max-width:34em}
+.cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;background:var(--deep);color:#f7ecd6;font-weight:700;text-decoration:none;border:2px solid var(--deep)}
+.cta:hover,.cta:focus-visible{background:#6a2a20;outline:3px solid var(--ochre);outline-offset:2px}
+.cta.ghost{background:transparent;color:var(--brown);border-color:var(--brown)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.fig{position:relative;min-height:360px}
+.fig svg{position:absolute;inset:0;width:100%;height:100%}
+.meter{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px clamp(18px,3vw,32px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:end}
+.meter .bar{grid-column:1/-1;height:14px;border-radius:99px;background:var(--line);overflow:hidden}
+.meter .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8c641a,#a67225);transition:width 1.2s ease}
+.k{font-family:Alegreya,serif;font-size:clamp(26px,3vw,34px);color:var(--brown);white-space:nowrap}
+.kl{font-size:14px;color:var(--muted)}
+.note{font-size:14px;color:var(--muted);margin-top:8px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+.money{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border:0;font-weight:700}
+.row span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.tiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:20px}
+.tier{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:6px}
+.tier .p{font-family:Alegreya,serif;font-size:30px;color:var(--ochre)}
+.tier .d{font-size:14px;color:var(--muted);margin-top:auto}
+.tier.star{border:2px solid var(--ochre)}
+.time{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:14px}
+.time li{display:grid;grid-template-columns:9em minmax(0,1fr);gap:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.time b{font-family:Alegreya,serif;color:var(--brown);font-size:19px;white-space:nowrap}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:10px}
+summary{cursor:pointer;font-weight:700;color:var(--brown);min-height:28px}
+summary:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+.word{background:var(--deep);color:#f1dcb5;border-radius:22px;padding:clamp(22px,4vw,40px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+.word h2{color:#f1dcb5}.word p{margin:0;color:#e6d2ad}
+.word button{min-height:48px;padding:0 22px;border-radius:999px;border:2px solid #d9a956;background:transparent;color:#f1dcb5;font:700 16px "Alegreya Sans",sans-serif;cursor:pointer}
+.word button:focus-visible{outline:3px solid #f1dcb5;outline-offset:2px}
+#mean{font-size:18px;min-height:3.2em}
+footer{background:var(--deep);color:#e6d2ad;font-size:15px}
+footer a{color:#f1dcb5}
+@media(max-width:820px){.hero,.two{grid-template-columns:1fr}.fig{min-height:300px;order:-1}.meter{grid-template-columns:repeat(2,minmax(0,1fr))}.word{grid-template-columns:1fr}}
+@media(max-width:600px){.time li{grid-template-columns:1fr;gap:2px}}
+@media(prefers-reduced-motion:reduce){.meter .bar i{transition:none}.float{animation:none!important}}
+.float{animation:rise 6s ease-in-out infinite}
+@keyframes rise{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+</style>
+</head>
+<body>
+<div class="top"><b>Aabrami hobulausujad</b><span>Unleashed Publishing · Hooandja kampaania 6.01–21.02.2027</span></div>
+
+<section class="band"><div class="wrap hero">
+  <div>
+    <h1>„Meistrite aabits”: eesti keel elama kõigile 7–107-aastastele</h1>
+    <p class="lead">Kati Murutari kaheköiteline aabits on kirjutatud ja õpilastega järele proovitud. Nüüd on vaja 152 inimest, et see läheks trükki ja jõuaks 21. märtsil esitluseni ning sealt koolidesse ja kodudesse.</p>
+    <div class="ctas"><a class="cta" href="https://hooandja.ee">Toeta Hooandjas</a><a class="cta ghost" href="#paketid">Vaata pakette</a></div>
+  </div>
+  <div class="fig" aria-label="Aabitsa kaks köidet, millest tõusevad mitmetähenduslikud sõnad">
+    <svg viewBox="0 0 520 400" role="img">
+      <defs>
+        <linearGradient id="par" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3deba"/><stop offset=".5" stop-color="#f1dcb5"/><stop offset="1" stop-color="#d2bb94"/></linearGradient>
+        <linearGradient id="v1" x1="0" x2="1"><stop offset="0" stop-color="#5a2219"/><stop offset="1" stop-color="#3a140f"/></linearGradient>
+        <linearGradient id="v2" x1="0" x2="1"><stop offset="0" stop-color="#a67225"/><stop offset="1" stop-color="#7a5414"/></linearGradient>
+      </defs>
+      <rect x="20" y="40" width="480" height="330" rx="28" fill="url(#par)" stroke="#8c641a" stroke-width="2"/>
+      <path d="M40 60 Q260 40 480 60" stroke="#8c641a" stroke-width="1.2" fill="none" opacity=".5"/>
+      <ellipse cx="260" cy="340" rx="170" ry="14" fill="#491d17" opacity=".18"/>
+      <g transform="translate(120 150) rotate(-6)">
+        <rect width="130" height="180" rx="6" fill="url(#v1)"/><rect x="0" width="14" height="180" fill="#2a0e0a"/>
+        <rect x="30" y="34" width="84" height="2" fill="#d9a956"/><rect x="30" y="140" width="84" height="2" fill="#d9a956"/>
+        <text x="72" y="82" text-anchor="middle" fill="#f1dcb5" font-family="Alegreya,serif" font-size="17">Meistrite</text>
+        <text x="72" y="104" text-anchor="middle" fill="#f1dcb5" font-family="Alegreya,serif" font-size="17">aabits</text>
+        <text x="72" y="128" text-anchor="middle" fill="#d9a956" font-family="Alegreya Sans,sans-serif" font-size="12">I köide · tekstid</text>
+      </g>
+      <g transform="translate(262 158) rotate(5)">
+        <rect width="130" height="180" rx="6" fill="url(#v2)"/><rect x="0" width="14" height="180" fill="#5c3e0c"/>
+        <rect x="30" y="34" width="84" height="2" fill="#491d17"/><rect x="30" y="140" width="84" height="2" fill="#491d17"/>
+        <text x="72" y="82" text-anchor="middle" fill="#2b1410" font-family="Alegreya,serif" font-size="17">Meistrite</text>
+        <text x="72" y="104" text-anchor="middle" fill="#2b1410" font-family="Alegreya,serif" font-size="17">aabits</text>
+        <text x="72" y="128" text-anchor="middle" fill="#491d17" font-family="Alegreya Sans,sans-serif" font-size="12">II köide · ülesanded</text>
+      </g>
+      <g font-family="Alegreya,serif" fill="#491d17">
+        <text class="float" x="70" y="100" font-size="26">tee</text>
+        <text class="float" x="190" y="88" font-size="22" style="animation-delay:1s">kuu</text>
+        <text class="float" x="300" y="104" font-size="28" style="animation-delay:2s">kurk</text>
+        <text class="float" x="410" y="92" font-size="22" style="animation-delay:3s">pea</text>
+        <text class="float" x="420" y="150" font-size="20" fill="#8c641a" style="animation-delay:1.5s">keel</text>
+      </g>
+    </svg>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <div class="meter" aria-label="Kampaania seis">
+    <div><div class="k" id="m1">0 €</div><div class="kl">kogutud 7 000 eurost</div></div>
+    <div><div class="k" id="m2">0</div><div class="kl">hooandjat 152-st</div></div>
+    <div><div class="k" id="m3">47</div><div class="kl">päeva kampaanias</div></div>
+    <div><div class="k">21.02</div><div class="kl">lõpp, emakeelepäev</div></div>
+    <div class="bar"><i id="bar"></i></div>
+  </div>
+  <p class="note">Kampaania algab 6. jaanuaril 2027. Numbrid uuenevad Hooandja andmete järgi. Kõik või mitte midagi: raha laekub ainult siis, kui 7 000 € saab täis.</p>
+</div></section>
+
+<section class="band"><div class="wrap two">
+  <div>
+    <h2>Miks just nüüd</h2>
+    <p>Eesti koolid lähevad üle eestikeelsele õppele ja õpetajatel napib vahendeid, mis teeksid keele elavaks. „Meistrite aabits” annab neile valmis tekstid ja ülesanded, mida saab kasutada nii tunnis kui ka kodus.</p>
+    <p>Tekstid on sündinud aastatel 2021–2026 Kati õpetajatöös ja neid on õpilastega järele proovitud. Kati õppevideoid kasutavad eesti keele õpetajad Eestis, Stockholmis, New Yorgis, Hispaanias ja Austraalias.</p>
+    <p>Aabits ilmub Kati juubelipäeval, 21. märtsil 2027, koos õppemänguga „Nii palju tähendusi!”, kus on 777 eesti keele mitmetähenduslikku sõna.</p>
+  </div>
+  <div class="money">
+    <h3>Kuhu Sinu toetus läheb</h3>
+    <div class="row"><span>Trükk ja köitmine, 500 kaheköitelist komplekti</span><span>6 096 €</span></div>
+    <div class="row"><span>Hooandja tasu 8%</span><span>560 €</span></div>
+    <div class="row"><span>Pakkimine ja saatmine</span><span>344 €</span></div>
+    <div class="row"><span>Kokku</span><span>7 000 €</span></div>
+    <p class="note">Kui trükk saab lisaks muu toetuse, läheb Sinu toetus küljendusse ja tasuta komplektidesse koolidele.</p>
+  </div>
+</div></section>
+
+<section class="band" id="paketid" style="padding-top:0"><div class="wrap">
+  <h2>Vali oma pakett</h2>
+  <div class="tiers" id="tiers"></div>
+  <p class="note">Komplekti saab esitlusel või Tallinnas ja Raplas tasuta kätte. Pakiautomaati Eestis lisandub saatmistasu.</p>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <div class="word">
+    <div>
+      <h2>Mitu tähendust on sõnal?</h2>
+      <p id="mean">Vajuta nuppu ja vaata, mida mäng „Nii palju tähendusi!” teeb.</p>
+    </div>
+    <button type="button" id="next">Uus sõna</button>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap two">
+  <div>
+    <h2>Teekond esitluseni</h2>
+    <ul class="time">
+      <li><b>6. jaanuar</b><span>Kolmekuningapäeval algab kampaania.</span></li>
+      <li><b>21. veebruar</b><span>Rahvusvahelisel emakeelepäeval lõpeb kogumine.</span></li>
+      <li><b>Märts</b><span>Aabits läheb Tallinna Raamatutrükikotta trükki.</span></li>
+      <li><b>21. märts</b><span>Juubeliesitlus. Hooandjad saavad oma komplektid kätte.</span></li>
+      <li><b>Aprill</b><span>Ülejäänud komplektid jõuavad toetajate ja koolideni.</span></li>
+    </ul>
+  </div>
+  <div>
+    <h2>Kes teeb</h2>
+    <p>Kati Saara Murutar on kirjanik, ajakirjanik ja eesti keele õpetaja, kes on kirjutanud romaane, näidendeid ja heliraamatuid. Aabitsa annab välja Unleashed Publishing koostöös MTÜ-ga Aabrami hobulausujad.</p>
+    <h3 style="margin-top:28px">Küsimused</h3>
+    <details><summary>Millal raamat kätte tuleb?</summary><p>Märtsis ja aprillis 2027. 120-eurose paketi toetajad saavad komplekti esitlusel 21. märtsil.</p></details>
+    <details><summary>Kas saab kinkida?</summary><p>Jah. Märgi toetades kingisaaja nimi ja Kati kirjutab pühenduse temale.</p></details>
+    <details><summary>Kas sobib välismaale?</summary><p>Jah. Saatmise hinna lepime kokku eraldi.</p></details>
+    <details><summary>Mis saab, kui eesmärk ei täitu?</summary><p>Siis Hooandja raha ei võta ja keegi ei maksa midagi.</p></details>
+  </div>
+</div></section>
+
+<section class="band" style="text-align:center"><div class="wrap">
+  <h2>152 inimest saadavad aabitsa trükki</h2>
+  <p class="lead" style="margin:0 auto 18px">Toeta ja saa oma komplekt esimeste seas.</p>
+  <a class="cta" href="https://hooandja.ee">Toeta Hooandjas</a>
+</div></section>
+
+<footer class="band"><div class="wrap two">
+  <div><b>MTÜ Aabrami hobulausujad</b><br>Südamesalu, Kuusiku-Nõmme, Raplamaa<br>hobulausujad@gmail.com · +372 510 7709</div>
+  <div>Kirjastaja: Unleashed Publishing (Teslawave OÜ)<br><a href="https://aabramihobulausujad.ee">aabramihobulausujad.ee</a></div>
+</div></footer>
+
+<script>
+{
+const tiers=[
+ {p:10,t:"Tänu",d:"Kati isiklik tänukiri ja Sinu nimi hooandjate lehel.",w:"veebruar 2027"},
+ {p:25,t:"E-raamat",d:"Aabitsa e-raamatu esmatrükk (PDF) ja nimi hooandjate lehel.",w:"märts 2027"},
+ {p:47,t:"Kaks köidet",d:"Kaheköiteline „Meistrite aabits” ja e-raamat.",w:"märts–aprill 2027",s:1},
+ {p:75,t:"Signeeritud",d:"Kati signeeritud komplekt isikliku pühendusega ja e-raamat.",w:"märts–aprill 2027"},
+ {p:120,t:"Esitlusele",d:"Signeeritud komplekt ja kutse kahele 21. märtsi juubeliesitlusele.",w:"21. märts 2027"},
+ {p:250,t:"Komplekt koolile",d:"Signeeritud komplekt Sulle ja teine Sinu valitud koolile või raamatukogule.",w:"märts–aprill 2027"},
+ {p:500,t:"Kati tund",d:"Kati 90-minutiline veebitund Sinu klassile, töökaaslastele või perele ja kaks komplekti.",w:"kokkuleppel 2027"},
+ {p:1000,t:"Patroon",d:"Nimi aabitsa tänulehel, nummerdatud juubelieksemplar ja kutse esitlusele.",w:"21. märts 2027"}];
+const fmt=n=>n.toLocaleString('et-EE')+' €';
+document.getElementById('tiers').innerHTML=tiers.map(x=>`<div class="tier${x.s?' star':''}"><div class="p">${fmt(x.p)}</div><h3>${x.t}</h3><div>${x.d}</div><div class="d">Kättesaamine: ${x.w}</div></div>`).join('');
+
+const words=[["tee","jook, mida keedame · rada, mida mööda käime · käsk midagi teha"],["kuu","taevakeha · aasta kaheteistkümnendik"],["kurk","köögivili · kaela sisemus"],["pea","kehaosa · juht · käsk peatuda (pea kinni!)"],["keel","suu lihas · see, mida räägime · pilli keel"],["laud","mööbliese · pikk lai puutükk, näiteks põrandalaud"]];
+let i=-1;const mean=document.getElementById('mean');
+document.getElementById('next').addEventListener('click',()=>{i=(i+1)%words.length;const [w,m]=words[i];mean.textContent='';const b=document.createElement('b');b.textContent=w+': ';mean.append(b,document.createTextNode(m));});
+
+const raised=0,backers=0,goal=7000;
+document.getElementById('m1').textContent=fmt(raised);
+document.getElementById('m2').textContent=backers;
+requestAnimationFrame(()=>{document.getElementById('bar').style.width=Math.min(100,raised/goal*100)+'%'});
+}
+</script>
+</body>
+</html>
